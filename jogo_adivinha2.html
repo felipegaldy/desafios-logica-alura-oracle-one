@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Adivinha</title>
+</head>
+<body>
+    
+    <input />
+    <button>verificar</button>
+
+    <script>
+        
+        const sorteia = () =>{
+            return Math.round(Math.random() * 10)
+        }
+        
+        const sorteiaNumero = (quantidade) => {
+            var segredos = [];
+            let cont = 1
+            
+            while (cont <= quantidade){
+                let num = sorteia();
+                let check = false;
+                
+                for(let i = 0; i < segredos.length; i++){                   
+                        if (segredos[i] == num || num == 0){
+                            check = true;
+                            break;
+                        } 
+                }
+                if(check == false){
+                    segredos.push(num);
+                    cont ++
+                }
+                
+            }
+            return segredos = segredos
+        }
+        
+        var segredos = sorteiaNumero(3);
+
+
+
+
+
+        var input = document.querySelector("input")
+        const verifica = () => {
+
+            for(let i = 0; i < segredos.length; i++){
+                if (input.value == segredos[i]) {
+                alert('Voce acertou!!');
+                break;
+            } else {
+                alert('você errou!!')
+                break;
+            }
+            }
+
+                
+            input.value = "";
+            input.focus();
+        }
+        var button = document.querySelector('button');
+        button.onclick = verifica;
+    </script>
+
+</body>
+</html>
